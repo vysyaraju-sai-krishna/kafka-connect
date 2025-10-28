@@ -1,0 +1,46 @@
+{
+  "name": "inventory-mysql-source-connector4",
+  "config": {
+    "connector.class": "io.debezium.connector.mysql.MySqlConnector",
+    "tasks.max": "1",
+ 
+    "database.hostname": "mysql",
+    "database.port": "3306",
+    "database.user": "root",
+    "database.password": "vsaikrish@143",
+    "database.server.id": "1",
+    "database.include.list": "db1",
+    "table.include.list": "db1.students",
+    "snapshot.mode": "initial",
+ 
+    "topic.prefix": "inventory",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "key.converter.schemas.enable": "false",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": "true",
+ 
+    "errors.log.enable": "true",
+    "errors.log.include.messages": "true",
+ 
+    "database.history": "io.debezium.relational.history.KafkaDatabaseHistory",
+    "schema.history.internal.kafka.bootstrap.servers": "kafka2:12092,kafka2:15092" ,
+    "schema.history.internal.kafka.topic": "schema-history.inventory",
+ 
+    "schema.history.internal.producer.security.protocol": "SASL_SSL",
+    "schema.history.internal.producer.sasl.mechanism": "PLAIN",
+    "schema.history.internal.producer.sasl.jaas.config": "org.apache.kafka.common.security.plain.PlainLoginModule required username=\"admin\" password=\"admin-secret\";",
+    "schema.history.internal.producer.ssl.truststore.location": "/etc/kafka/secrets/kafka.connect.truststore.jks",
+    "schema.history.internal.producer.ssl.truststore.password": "confluent",
+ 
+    "schema.history.internal.consumer.security.protocol": "SASL_SSL",
+    "schema.history.internal.consumer.sasl.mechanism": "PLAIN",
+    "schema.history.internal.consumer.sasl.jaas.config": "org.apache.kafka.common.security.plain.PlainLoginModule required username=\"admin\" password=\"admin-secret\";",
+    "schema.history.internal.consumer.ssl.truststore.location": "/etc/kafka/secrets/kafka.connect.truststore.jks",
+    "schema.history.internal.consumer.ssl.truststore.password": "confluent"
+  }
+}
+
+
+
+  
+
